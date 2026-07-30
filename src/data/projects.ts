@@ -20,7 +20,7 @@ export const blacklistProjects: Project[] = [
     description:
       'A unique biometric scanner backend that uses canine nose prints for reliable identification, similar to human fingerprints. Built with advanced computer vision techniques and a scalable backend architecture.',
     technologies: ['Python', 'OpenCV', 'PyTorch', 'Spring Boot'],
-    liveUrl: 'https://dognose.demo.com',
+    liveUrl: null,
     githubUrl: 'https://github.com/SKKammar/DogNose',
     year: 2026,
     category: 'Backend / AI',
@@ -76,7 +76,7 @@ export const blacklistProjects: Project[] = [
     description:
       'An AI-powered coding assistant built with Next.js 15 and TypeScript that uses a Socratic hint engine to guide users toward solutions rather than giving direct answers. It features a knowledge graph to visualize learning progress, conducts structured code reviews with severity tags, and integrates Supabase for auth/database and the Gemini API for AI generation.',
     technologies: ['Next.js 15', 'TypeScript', 'Supabase', 'Gemini API'],
-    liveUrl: 'https://codementor.demo.com',
+    liveUrl: null,
     githubUrl: 'https://github.com/SKKammar/CodeMentor',
     year: 2026,
     category: 'Full Stack / AI',
@@ -90,7 +90,7 @@ export const blacklistProjects: Project[] = [
     description:
       "A GitHub App that automatically reviews pull requests using the Gemini API, posting inline comments just like a human reviewer. It's engineered with a background task pattern to handle webhook timeouts, processes files concurrently to avoid API rate limits, and secures requests with HMAC-SHA256 verification—making it a robust, developer-friendly CI/CD addition.",
     technologies: ['Node.js', 'GitHub Apps', 'Gemini API', 'CI/CD'],
-    liveUrl: 'https://pr-pilot.demo.com',
+    liveUrl: null,
     githubUrl: 'https://github.com/SKKammar/pr-pilot',
     year: 2026,
     category: 'CI/CD / Tooling',
