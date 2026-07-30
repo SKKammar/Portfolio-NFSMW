@@ -61,7 +61,7 @@ export function Navbar() {
         {/* Logo */}
         <a
           href="#"
-          className="font-heading text-lg font-bold uppercase tracking-wider text-rockport hover:text-white transition-colors"
+          className="font-heading text-lg font-bold uppercase tracking-wider text-rockport hover:text-white transition-colors mr-8 lg:mr-12"
         >
           SK<span className="text-white">K</span>
         </a>
