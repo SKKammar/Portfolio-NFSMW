@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
-import { Download, ArrowRight, Shield } from 'lucide-react';
+import { Download, ArrowRight } from 'lucide-react';
 import { SkewButton } from '@/components/ui/SkewButton';
 import { usePursuitRadar } from '@/hooks/usePursuitRadar';
 
@@ -64,14 +64,15 @@ export function Hero() {
         <motion.div variants={containerVariants} initial="hidden" animate="show">
           {/* Most Wanted Badge */}
           <motion.div variants={itemVariants} className="mb-6">
-            <div className="police-glow inline-flex items-center gap-3 border-2 border-rockport/40 bg-carbon clip-angular px-4 py-2">
-              <Shield className="h-4 w-4 text-pursuit-red" />
-              <span className="font-heading text-xs font-bold uppercase tracking-[0.3em] text-rockport">
-                Most Wanted — Active
-              </span>
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping bg-pursuit-red opacity-75" />
-                <span className="relative inline-flex h-2 w-2 bg-pursuit-red" />
+            <div className="police-glow inline-flex items-center border-2 border-pursuit-red bg-asphalt/90 px-4 py-1.5 -skew-x-[4deg]">
+              <span className="skew-x-[4deg] flex items-center gap-3">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping bg-pursuit-red opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 bg-pursuit-red" />
+                </span>
+                <span className="font-heading text-xs font-bold uppercase tracking-[0.3em] text-white">
+                  Most Wanted <span className="text-pursuit-red">///</span> Active
+                </span>
               </span>
             </div>
           </motion.div>

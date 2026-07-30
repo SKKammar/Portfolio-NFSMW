@@ -42,7 +42,7 @@ export function Navbar() {
         const visible = entries.find((entry) => entry.isIntersecting);
         if (visible) setActive(visible.target.id);
       },
-      { threshold: 0.3 }
+      { threshold: 0.1, rootMargin: '-10% 0px -40% 0px' }
     );
 
     sections.forEach((section) => observer.observe(section));
