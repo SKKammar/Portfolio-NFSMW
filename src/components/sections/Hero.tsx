@@ -86,7 +86,7 @@ export function Hero() {
             >
               <span className="text-white">Santosh</span>
               <br />
-              <span className="text-sepia-gradient">K Kammar</span>
+              <span className="text-sepia-gradient pr-4">K Kammar&nbsp;</span>
             </h1>
           </motion.div>
 
