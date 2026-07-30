@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { RadioPlayer } from '@/components/RadioPlayer';
+import { useUIAudio } from '@/hooks/useUIAudio';
 
 const links = [
   { href: '#driver-profile', label: 'Driver Profile', id: 'driver-profile' },
@@ -15,6 +16,7 @@ export function Navbar() {
   const [active, setActive] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { playMenuClank } = useUIAudio();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -69,7 +71,8 @@ export function Navbar() {
             <a
               key={link.id}
               href={link.href}
-              className={`relative flex items-center font-heading text-sm font-semibold uppercase tracking-[0.2em] transition-colors ${
+              onClick={() => playMenuClank()}
+              className={`relative flex items-center font-heading text-sm font-semibold uppercase tracking-[0.2em] transition-none ${
                 active === link.id
                   ? 'text-rockport'
                   : 'text-exhaust hover:text-rockport'
@@ -82,7 +85,18 @@ export function Navbar() {
             </a>
           ))}
 
-          {/* Radio Easter Egg */}
+          {/* Heat Level */}
+          <div className="ml-4 border-l border-industrial-light pl-4 flex items-center gap-2" title="Condition 5 Pursuit / Actively Hunting for Roles">
+            <span className="font-heading text-[10px] font-bold text-pursuit-red tracking-[0.2em] uppercase hidden lg:block">
+              Heat Level 5
+            </span>
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pursuit-red opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pursuit-red shadow-[0_0_8px_rgba(192,57,43,1)]" />
+            </span>
+          </div>
+
+          {/* EA Trax / Radio */}
           <div className="ml-4 border-l border-industrial-light pl-4">
             <RadioPlayer />
           </div>
@@ -107,8 +121,11 @@ export function Navbar() {
               <a
                 key={link.id}
                 href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className={`py-3 font-heading text-sm font-semibold uppercase tracking-[0.2em] transition-colors border-l-2 pl-4 ${
+                onClick={() => {
+                  playMenuClank();
+                  setMobileOpen(false);
+                }}
+                className={`py-3 font-heading text-sm font-semibold uppercase tracking-[0.2em] transition-none border-l-2 pl-4 ${
                   active === link.id
                     ? 'text-rockport border-rockport'
                     : 'text-exhaust border-transparent hover:text-rockport hover:border-rockport-dim'

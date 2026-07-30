@@ -81,31 +81,30 @@ body {
   color: var(--color-foreground);
 }
 
-/* Authentic NFS MW Vignette & Sepia Glow */
+/* Extreme NFS MW 2005 "Piss Filter" (Vignette & Sepia Burn) */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  background: radial-gradient(circle, transparent 40%, rgba(10, 10, 10, 0.85) 100%),
-              radial-gradient(ellipse at 50% 0%, rgba(164, 74, 33, 0.05), transparent 50%),
-              radial-gradient(ellipse at 50% 100%, rgba(74, 55, 40, 0.1), transparent 50%);
-  mix-blend-mode: multiply;
+  /* Pitch black edges, heavy yellow/orange center */
+  background: radial-gradient(ellipse at center, rgba(229, 193, 88, 0.4) 0%, rgba(164, 74, 33, 0.6) 50%, rgba(0, 0, 0, 0.95) 100%);
+  mix-blend-mode: color-burn;
 }
 
-/* Carbon fiber & CRT Scanlines overlay */
+/* Carbon fiber & Gritty Scanlines */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 51;
-  opacity: 0.15;
+  opacity: 0.3;
   background: 
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  background-size: 100% 4px, 6px 100%;
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%), 
+    linear-gradient(90deg, rgba(229, 193, 88, 0.08), rgba(0, 0, 0, 0.05));
+  background-size: 100% 4px, 4px 100%;
 }
 
 /* Selection — warm gold */

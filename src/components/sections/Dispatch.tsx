@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Mail, Radio } from 'lucide-react';
+import { useUIAudio } from '@/hooks/useUIAudio';
 
 function GithubIcon({ size = 24 }: { size?: number }) {
   return (
@@ -50,6 +51,8 @@ const contactChannels = [
 ];
 
 export function Dispatch() {
+  const { playCrossShout, playMenuClank } = useUIAudio();
+
   return (
     <section
       id="dispatch"
@@ -103,7 +106,14 @@ export function Dispatch() {
             viewport={{ once: true, margin: '-10%' }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             whileHover={{ y: -5, x: 3 }}
-            className={`group relative flex flex-col items-center justify-center gap-4 border-2 border-industrial-light bg-gritty p-8 clip-angular glitch-hover ${channel.hoverBorder}`}
+            onClick={(e) => {
+              if (channel.name === 'Email') {
+                playCrossShout();
+              } else {
+                playMenuClank();
+              }
+            }}
+            className={`group relative flex flex-col items-center justify-center gap-4 border-2 border-industrial-light bg-gritty p-8 clip-angular glitch-hover transition-none ${channel.hoverBorder}`}
           >
             {/* Left accent bar */}
             <div

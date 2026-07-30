@@ -19,57 +19,74 @@ export function RadioPlayer() {
     masterGain.connect(ctx.destination);
     gainRef.current = masterGain;
 
-    // Low engine rumble
+    // EA Trax Nu-Metal/Synth Distorted Chug
     const osc1 = ctx.createOscillator();
     osc1.type = 'sawtooth';
-    osc1.frequency.value = 55;
-    const gain1 = ctx.createGain();
-    gain1.gain.value = 0.3;
-    osc1.connect(gain1);
-    gain1.connect(masterGain);
-    osc1.start();
+    osc1.frequency.value = 55; // Low A1
 
-    // Sub-bass throb
-    const osc2 = ctx.createOscillator();
-    osc2.type = 'sine';
-    osc2.frequency.value = 30;
-    const gain2 = ctx.createGain();
-    gain2.gain.value = 0.4;
-    osc2.connect(gain2);
-    gain2.connect(masterGain);
-    osc2.start();
-
-    // Engine modulation LFO
-    const lfo = ctx.createOscillator();
-    lfo.type = 'sine';
-    lfo.frequency.value = 2.5;
-    const lfoGain = ctx.createGain();
-    lfoGain.gain.value = 8;
-    lfo.connect(lfoGain);
-    lfoGain.connect(osc1.frequency);
-    lfo.start();
-
-    // High-freq static/radio crackle
-    const bufferSize = 2 * ctx.sampleRate;
-    const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-    const output = noiseBuffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) {
-      output[i] = Math.random() * 2 - 1;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 300;
+    
+    // Heavy Distortion
+    const distortion = ctx.createWaveShaper();
+    const curve = new Float32Array(400);
+    for (let i = 0; i < 400; ++i) {
+      const x = (i * 2) / 400 - 1;
+      curve[i] = ((3 + 50) * x * 20 * (Math.PI / 180)) / (Math.PI + 50 * Math.abs(x));
     }
-    const noise = ctx.createBufferSource();
-    noise.buffer = noiseBuffer;
-    noise.loop = true;
-    const noiseGain = ctx.createGain();
-    noiseGain.gain.value = 0.08;
-    const noiseFilter = ctx.createBiquadFilter();
-    noiseFilter.type = 'highpass';
-    noiseFilter.frequency.value = 3000;
-    noise.connect(noiseFilter);
-    noiseFilter.connect(noiseGain);
-    noiseGain.connect(masterGain);
-    noise.start();
+    distortion.curve = curve;
+    distortion.oversample = '4x';
 
-    oscillatorsRef.current = [osc1, osc2, lfo];
+    // Rhythmic LFO to create the "chug"
+    const lfo = ctx.createOscillator();
+    lfo.type = 'square';
+    lfo.frequency.value = 4.2; // BPM roughly 126 
+    
+    const lfoGain = ctx.createGain();
+    lfoGain.gain.value = 800;
+    lfo.connect(lfoGain);
+    lfoGain.connect(filter.frequency);
+
+    const gain1 = ctx.createGain();
+    gain1.gain.value = 0.6;
+
+    osc1.connect(distortion);
+    distortion.connect(filter);
+    filter.connect(gain1);
+    gain1.connect(masterGain);
+    
+    osc1.start();
+    lfo.start();
+    
+    // High-freq synth lead (Shapeshifter/Celldweller style)
+    const lead = ctx.createOscillator();
+    lead.type = 'square';
+    lead.frequency.value = 220; // A3
+    
+    const leadLfo = ctx.createOscillator();
+    leadLfo.type = 'sine';
+    leadLfo.frequency.value = 0.5;
+    const leadLfoGain = ctx.createGain();
+    leadLfoGain.gain.value = 30;
+    leadLfo.connect(leadLfoGain);
+    leadLfoGain.connect(lead.frequency);
+    
+    const leadFilter = ctx.createBiquadFilter();
+    leadFilter.type = 'bandpass';
+    leadFilter.frequency.value = 1500;
+    
+    const leadGain = ctx.createGain();
+    leadGain.gain.value = 0.05;
+    
+    lead.connect(leadFilter);
+    leadFilter.connect(leadGain);
+    leadGain.connect(masterGain);
+    
+    lead.start();
+    leadLfo.start();
+
+    oscillatorsRef.current = [osc1, lfo, lead, leadLfo];
   }, []);
 
   const stopAudio = useCallback(() => {
@@ -119,7 +136,7 @@ export function RadioPlayer() {
         <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.4" />
         <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19" />
       </svg>
-      <span>Radio</span>
+      <span className="mt-[2px]">EA Trax</span>
       {/* Active indicator */}
       {isPlaying && (
         <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-rockport radio-active" />

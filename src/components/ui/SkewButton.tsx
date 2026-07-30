@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import { useUIAudio } from '@/hooks/useUIAudio';
 
 interface SkewButtonProps {
   children: ReactNode;
@@ -21,8 +22,15 @@ export function SkewButton({
   target,
   rel,
 }: SkewButtonProps) {
+  const { playMenuClank } = useUIAudio();
+
+  const handleClick = (e: React.MouseEvent) => {
+    playMenuClank();
+    if (onClick) onClick();
+  };
+
   const base =
-    'skew-btn inline-flex items-center px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider transition-all duration-200';
+    'skew-btn inline-flex items-center px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider transition-none';
 
   const variants = {
     primary:
@@ -37,14 +45,14 @@ export function SkewButton({
 
   if (href) {
     return (
-      <a href={href} className={classes} target={target} rel={rel}>
+      <a href={href} className={classes} target={target} rel={rel} onClick={handleClick}>
         <span>{children}</span>
       </a>
     );
   }
 
   return (
-    <button onClick={onClick} className={classes}>
+    <button onClick={handleClick} className={classes}>
       <span>{children}</span>
     </button>
   );

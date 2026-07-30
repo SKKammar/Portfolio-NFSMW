@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Key } from 'lucide-react';
 
 function GithubIcon({ size = 14 }: { size?: number }) {
   return (
@@ -11,8 +11,10 @@ function GithubIcon({ size = 14 }: { size?: number }) {
   );
 }
 import { blacklistProjects } from '@/data/projects';
+import { useUIAudio } from '@/hooks/useUIAudio';
 
 export function Blacklist() {
+  const { playMenuClank } = useUIAudio();
   const sorted = [...blacklistProjects].sort(
     (a, b) => b.blacklistRank - a.blacklistRank
   );
@@ -75,16 +77,20 @@ export function Blacklist() {
                   </div>
                 </div>
 
-                {project.topMetric && (
-                  <div className="border-2 border-industrial-light bg-asphalt/60 px-3 py-1.5 shrink-0">
-                    <span className="font-heading text-base font-bold text-rockport">
-                      {project.topMetric.value}
-                    </span>
-                    <span className="ml-2 text-[10px] uppercase tracking-widest text-fog">
-                      {project.topMetric.label}
-                    </span>
-                  </div>
-                )}
+                <div className="flex gap-2">
+                  {project.costToState && (
+                    <div className="border-2 border-industrial-light bg-asphalt/60 px-3 py-1.5 shrink-0 text-right hidden sm:block">
+                      <div className="text-[10px] uppercase tracking-widest text-fog">Cost to State</div>
+                      <div className="font-heading text-base font-bold text-rockport-dim">{project.costToState}</div>
+                    </div>
+                  )}
+                  {project.bounty && (
+                    <div className="border-2 border-rockport-dark bg-asphalt/80 px-3 py-1.5 shrink-0 text-right">
+                      <div className="text-[10px] uppercase tracking-widest text-pursuit-red">Bounty</div>
+                      <div className="font-heading text-lg font-bold text-rockport">{project.bounty}</div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Title */}
@@ -123,10 +129,11 @@ export function Blacklist() {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-wider text-exhaust transition-colors hover:text-rockport"
+                    onClick={playMenuClank}
+                    className="inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-wider text-exhaust transition-none hover:text-rockport"
                   >
-                    <GithubIcon size={14} />
-                    Source Code
+                    <Key size={14} className="text-rockport" />
+                    Claim Pink Slip
                   </a>
                 )}
                 {project.liveUrl && (
@@ -134,7 +141,8 @@ export function Blacklist() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-wider text-exhaust transition-colors hover:text-rockport"
+                    onClick={playMenuClank}
+                    className="inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-wider text-exhaust transition-none hover:text-rockport"
                   >
                     <ExternalLink size={14} />
                     Live Demo
