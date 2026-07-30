@@ -20,7 +20,7 @@ export default function Page() {
       {!entered && <IntroSplash onEnter={() => setEntered(true)} />}
 
       {/* Main Site */}
-      <div className={entered ? 'animate-[intro-fade_0s_ease_forwards] opacity-100' : 'opacity-0'}>
+      <div className={`transition-opacity duration-1000 ${entered ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
         <RoadBackground />
 
         <div className="relative z-10">
