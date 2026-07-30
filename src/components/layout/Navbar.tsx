@@ -156,8 +156,28 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
-            <div className="mt-4 pt-4 border-t border-industrial-light">
-              <RadioPlayer />
+            <div className="mt-4 pt-4 border-t border-industrial-light flex flex-col gap-4">
+              <button
+                onClick={() => {
+                  playMenuClank();
+                  const newState = !radarOn;
+                  setRadarOn(newState);
+                  window.dispatchEvent(new CustomEvent('radar-audio-toggle', { detail: newState }));
+                }}
+                className={`py-2 text-left font-heading text-sm font-semibold uppercase tracking-[0.2em] transition-none border-l-2 pl-4 flex items-center ${
+                  radarOn
+                    ? 'text-rockport border-rockport'
+                    : 'text-exhaust border-transparent hover:text-rockport hover:border-rockport-dim'
+                }`}
+              >
+                {radarOn && (
+                  <span className="animate-pulse mr-2 font-bold">{'>>'}</span>
+                )}
+                Comm Link
+              </button>
+              <div className="border-l-2 border-transparent pl-4">
+                <RadioPlayer />
+              </div>
             </div>
           </div>
         </div>

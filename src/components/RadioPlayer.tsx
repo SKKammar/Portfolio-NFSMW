@@ -1,23 +1,40 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+
+// Global state to sync multiple instances of RadioPlayer (desktop nav & mobile menu)
+let globalIsPlaying = false;
+let globalAudioContext: AudioContext | null = null;
+let globalOscillators: OscillatorNode[] = [];
+let globalGain: GainNode | null = null;
+const listeners = new Set<(playing: boolean) => void>();
+
+function syncState(playing: boolean) {
+  globalIsPlaying = playing;
+  listeners.forEach((listener) => listener(playing));
+}
 
 export function RadioPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const oscillatorsRef = useRef<OscillatorNode[]>([]);
-  const gainRef = useRef<GainNode | null>(null);
+  const [isPlaying, setIsPlaying] = useState(globalIsPlaying);
+
+  useEffect(() => {
+    const handler = (playing: boolean) => setIsPlaying(playing);
+    listeners.add(handler);
+    return () => {
+      listeners.delete(handler);
+    };
+  }, []);
 
   const startAudio = useCallback(() => {
-    if (audioContextRef.current) return;
+    if (globalAudioContext) return;
 
     const ctx = new AudioContext();
-    audioContextRef.current = ctx;
+    globalAudioContext = ctx;
 
     const masterGain = ctx.createGain();
     masterGain.gain.value = 0.06;
     masterGain.connect(ctx.destination);
-    gainRef.current = masterGain;
+    globalGain = masterGain;
 
     // EA Trax Nu-Metal/Synth Distorted Chug
     const osc1 = ctx.createOscillator();
@@ -86,30 +103,31 @@ export function RadioPlayer() {
     lead.start();
     leadLfo.start();
 
-    oscillatorsRef.current = [osc1, lfo, lead, leadLfo];
+    globalOscillators = [osc1, lfo, lead, leadLfo];
   }, []);
 
   const stopAudio = useCallback(() => {
-    oscillatorsRef.current.forEach((osc) => {
+    globalOscillators.forEach((osc) => {
       try {
         osc.stop();
       } catch {}
     });
-    oscillatorsRef.current = [];
-    if (audioContextRef.current) {
-      audioContextRef.current.close();
-      audioContextRef.current = null;
+    globalOscillators = [];
+    if (globalAudioContext) {
+      globalAudioContext.close();
+      globalAudioContext = null;
     }
-    gainRef.current = null;
+    globalGain = null;
   }, []);
 
   const toggle = () => {
     if (isPlaying) {
       stopAudio();
+      syncState(false);
     } else {
       startAudio();
+      syncState(true);
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -129,6 +147,7 @@ export function RadioPlayer() {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className={isPlaying ? "text-rockport animate-pulse" : ""}
       >
         <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" />
         <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.4" />
@@ -136,7 +155,8 @@ export function RadioPlayer() {
         <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.4" />
         <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19" />
       </svg>
-      <span className="mt-[2px]">EA Trax</span>
+      <span className="mt-[2px] hidden md:inline">EA Trax</span>
+      <span className="mt-[2px] inline md:hidden">Radio</span>
       {/* Active indicator */}
       {isPlaying && (
         <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-rockport radio-active" />
