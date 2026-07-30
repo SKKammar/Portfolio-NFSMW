@@ -76,20 +76,7 @@ export function Blacklist() {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
-                  {project.costToState && (
-                    <div className="border-2 border-industrial-light bg-asphalt/60 px-3 py-1.5 shrink-0 text-right hidden sm:block">
-                      <div className="text-[10px] uppercase tracking-widest text-fog">Cost to State</div>
-                      <div className="font-heading text-base font-bold text-rockport-dim">{project.costToState}</div>
-                    </div>
-                  )}
-                  {project.bounty && (
-                    <div className="border-2 border-rockport-dark bg-asphalt/80 px-3 py-1.5 shrink-0 text-right">
-                      <div className="text-[10px] uppercase tracking-widest text-pursuit-red">Bounty</div>
-                      <div className="font-heading text-lg font-bold text-rockport">{project.bounty}</div>
-                    </div>
-                  )}
-                </div>
+
               </div>
 
               {/* Title */}
