@@ -278,13 +278,14 @@ img {
 }
 
 .snappy-hover:hover {
-  background-color: var(--color-hazard);
+  background: var(--color-hazard) !important;
   color: var(--color-asphalt-light) !important;
   border-color: var(--color-hazard);
 }
 
 .snappy-hover:hover * {
   color: var(--color-asphalt-light) !important;
+  border-color: rgba(17, 17, 17, 0.2) !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -82,7 +82,7 @@ export function Hero() {
               ref={nameRef}
               id="hero-name"
               style={glowStyle}
-              className="font-heading text-5xl font-bold uppercase italic leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl overflow-visible pr-4 pb-2"
+              className="font-heading text-5xl font-bold uppercase italic leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl inline-block overflow-visible pr-8 pb-2"
             >
               <span className="text-white">Santosh</span>
               <br />
