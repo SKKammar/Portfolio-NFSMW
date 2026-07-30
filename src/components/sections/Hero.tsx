@@ -82,7 +82,7 @@ export function Hero() {
               ref={nameRef}
               id="hero-name"
               style={glowStyle}
-              className="font-heading text-5xl font-bold uppercase italic leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl inline-block overflow-visible pr-8 pb-2"
+              className="font-heading text-4xl font-bold uppercase italic leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl inline-block overflow-visible pr-8 pb-2"
             >
               <span className="text-white">Santosh</span>
               <br />
@@ -127,7 +127,7 @@ export function Hero() {
           >
             <SkewButton
               variant="primary"
-              href="https://github.com/SKKammar/My-Portfolio/raw/master/public/resume.pdf"
+              href="https://drive.google.com/file/d/1Cja8DQr98w1S3KZ9VdRpD0rm3j00HDW2/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
             >
