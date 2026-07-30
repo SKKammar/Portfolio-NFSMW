@@ -1,10 +1,10 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
 import { Download, ArrowRight, Shield } from 'lucide-react';
 import { SkewButton } from '@/components/ui/SkewButton';
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -12,7 +12,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 40, scale: 0.95 },
   show: {
     opacity: 1,
