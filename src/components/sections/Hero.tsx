@@ -1,8 +1,10 @@
 'use client';
 
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
 import { Download, ArrowRight, Shield } from 'lucide-react';
 import { SkewButton } from '@/components/ui/SkewButton';
+import { usePursuitRadar } from '@/hooks/usePursuitRadar';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -26,6 +28,25 @@ export function Hero() {
   const { scrollY } = useScroll();
   const yText = useTransform(scrollY, [0, 800], [0, 200]);
   const opacityText = useTransform(scrollY, [0, 400], [1, 0]);
+
+  const nameRef = useRef<HTMLHeadingElement>(null);
+  const [radarAudioOn, setRadarAudioOn] = useState(false);
+  
+  useEffect(() => {
+    const handleToggle = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      setRadarAudioOn(customEvent.detail);
+    };
+    window.addEventListener('radar-audio-toggle', handleToggle);
+    return () => window.removeEventListener('radar-audio-toggle', handleToggle);
+  }, []);
+
+  const { intensity } = usePursuitRadar(nameRef, radarAudioOn);
+  
+  const glowStyle = {
+    textShadow: intensity > 0 ? `0 0 ${intensity * 30}px rgba(234, 179, 8, ${intensity})` : 'none',
+    transition: 'text-shadow 0.1s ease-out'
+  };
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden px-4 md:px-12">
@@ -58,8 +79,10 @@ export function Hero() {
           {/* Name */}
           <motion.div variants={itemVariants}>
             <h1
+              ref={nameRef}
               id="hero-name"
-              className="font-heading text-5xl font-bold uppercase italic leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+              style={glowStyle}
+              className="font-heading text-5xl font-bold uppercase italic leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl overflow-visible pr-4 pb-2"
             >
               <span className="text-white">Santosh</span>
               <br />

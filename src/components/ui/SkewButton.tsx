@@ -30,7 +30,7 @@ export function SkewButton({
   };
 
   const base =
-    'skew-btn inline-flex items-center px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider transition-none';
+    'group inline-flex items-center px-6 py-3 font-heading text-sm font-bold uppercase tracking-wider transition-none -skew-x-[4deg]';
 
   const variants = {
     primary:
@@ -46,14 +46,22 @@ export function SkewButton({
   if (href) {
     return (
       <a href={href} className={classes} target={target} rel={rel} onClick={handleClick}>
-        <span>{children}</span>
+        <span className="skew-x-[4deg] flex items-center gap-2">
+          <span className="text-rockport-dim opacity-50">[</span>
+          {children}
+          <span className="text-rockport-dim opacity-50">]</span>
+        </span>
       </a>
     );
   }
 
   return (
     <button onClick={handleClick} className={classes}>
-      <span>{children}</span>
+      <span className="skew-x-[4deg] flex items-center gap-2">
+        <span className="text-rockport-dim opacity-50">[</span>
+        {children}
+        <span className="text-rockport-dim opacity-50">]</span>
+      </span>
     </button>
   );
 }

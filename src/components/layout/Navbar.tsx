@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Radar } from 'lucide-react';
 import { RadioPlayer } from '@/components/RadioPlayer';
 import { useUIAudio } from '@/hooks/useUIAudio';
 
@@ -16,6 +16,7 @@ export function Navbar() {
   const [active, setActive] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [radarOn, setRadarOn] = useState(false);
   const { playMenuClank } = useUIAudio();
 
   useEffect(() => {
@@ -94,6 +95,26 @@ export function Navbar() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pursuit-red opacity-75" />
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pursuit-red shadow-[0_0_8px_rgba(192,57,43,1)]" />
             </span>
+          </div>
+
+          {/* Radar Toggle */}
+          <div className="ml-4 border-l border-industrial-light pl-4 flex items-center">
+            <button
+              onClick={() => {
+                playMenuClank();
+                const newState = !radarOn;
+                setRadarOn(newState);
+                window.dispatchEvent(new CustomEvent('radar-audio-toggle', { detail: newState }));
+              }}
+              className="relative flex items-center gap-2 px-3 py-1.5 text-xs font-heading uppercase tracking-widest text-exhaust transition-none snappy-hover"
+              title="Toggle Pursuit Radar Audio"
+            >
+              <Radar size={16} className={radarOn ? "text-rockport animate-pulse" : ""} />
+              <span className="mt-[2px] hidden lg:block">Comm Link</span>
+              {radarOn && (
+                <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-rockport radio-active" />
+              )}
+            </button>
           </div>
 
           {/* EA Trax / Radio */}

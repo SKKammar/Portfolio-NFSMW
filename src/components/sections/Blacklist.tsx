@@ -49,12 +49,11 @@ export function Blacklist() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-5%' }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="group relative border-2 border-industrial-light bg-carbon clip-angular glitch-hover"
+            className="group relative border-2 border-industrial-light bg-carbon -skew-x-[4deg] snappy-hover"
           >
-            {/* Yellow left accent */}
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-rockport transition-all duration-300 group-hover:w-1.5 group-hover:bg-rockport" />
-
-            <div className="p-6 pl-8 md:p-8 md:pl-10">
+            {/* Inverse skew wrapper for content */}
+            <div className="skew-x-[4deg] p-6 pl-8 md:p-8 md:pl-10 flex flex-col h-full relative z-10">
+              {/* Yellow left accent (needs inverse skew reset technically, but position absolute is fine if we place it outside, let's keep it here for simplicity or move it out) */}
               {/* Top row: Rank + Category + Metric */}
               <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                 <div className="flex items-center gap-4">
@@ -103,9 +102,12 @@ export function Blacklist() {
               )}
 
               {project.description && (
-                <p className="mt-4 text-sm leading-relaxed text-exhaust max-w-3xl">
-                  {project.description}
-                </p>
+                <div className="mt-4 max-w-3xl">
+                  <span className="text-[10px] uppercase tracking-widest text-pursuit-red block mb-1">Known Infractions</span>
+                  <p className="text-sm leading-relaxed text-exhaust group-hover:text-asphalt">
+                    {project.description}
+                  </p>
+                </div>
               )}
 
               {/* Tech tags */}
@@ -145,14 +147,13 @@ export function Blacklist() {
                     className="inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-wider text-exhaust transition-none hover:text-rockport"
                   >
                     <ExternalLink size={14} />
-                    Live Demo
+                    Access Target Data
                   </a>
                 )}
               </div>
             </div>
 
-            {/* Police-light hover glow */}
-            <div className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-r from-pursuit-red/3 via-transparent to-pursuit-blue/3" />
+            {/* Police-light hover glow (removed for snappy hover) */}
           </motion.div>
         ))}
       </div>
