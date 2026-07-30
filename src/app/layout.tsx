@@ -1,14 +1,14 @@
 import type { Metadata, Viewport } from 'next';
-import { Oswald, Roboto_Mono } from 'next/font/google';
+import { Permanent_Marker, Oswald } from 'next/font/google';
 import './globals.css';
 
-const oswald = Oswald({
+const marker = Permanent_Marker({
   variable: '--font-heading',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400'],
 });
 
-const robotoMono = Roboto_Mono({
+const oswald = Oswald({
   variable: '--font-body',
   subsets: ['latin'],
   weight: ['300', '400', '500', '700'],
@@ -62,7 +62,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${oswald.variable} ${robotoMono.variable}`}
+      className={`${marker.variable} ${oswald.variable}`}
     >
       <body className="min-h-screen antialiased">{children}</body>
     </html>

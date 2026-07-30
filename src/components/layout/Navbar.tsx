@@ -69,16 +69,16 @@ export function Navbar() {
             <a
               key={link.id}
               href={link.href}
-              className={`relative font-heading text-xs font-semibold uppercase tracking-[0.2em] transition-colors ${
+              className={`relative flex items-center font-heading text-sm font-semibold uppercase tracking-[0.2em] transition-colors ${
                 active === link.id
                   ? 'text-rockport'
                   : 'text-exhaust hover:text-rockport'
               }`}
             >
-              {link.label}
               {active === link.id && (
-                <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-rockport skew-btn" />
+                <span className="animate-pulse mr-2 font-bold">{'>>'}</span>
               )}
+              {link.label}
             </a>
           ))}
 

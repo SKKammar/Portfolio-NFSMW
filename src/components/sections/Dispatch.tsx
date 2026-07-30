@@ -103,7 +103,7 @@ export function Dispatch() {
             viewport={{ once: true, margin: '-10%' }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             whileHover={{ y: -5, x: 3 }}
-            className={`group relative flex flex-col items-center justify-center gap-4 border-2 border-industrial-light bg-industrial/60 p-8 backdrop-blur-sm transition-all duration-300 ${channel.hoverBorder}`}
+            className={`group relative flex flex-col items-center justify-center gap-4 border-2 border-industrial-light bg-gritty p-8 clip-angular glitch-hover ${channel.hoverBorder}`}
           >
             {/* Left accent bar */}
             <div

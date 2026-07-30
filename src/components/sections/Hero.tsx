@@ -43,7 +43,7 @@ export function Hero() {
         <motion.div variants={containerVariants} initial="hidden" animate="show">
           {/* Most Wanted Badge */}
           <motion.div variants={itemVariants} className="mb-6">
-            <div className="police-glow inline-flex items-center gap-3 border-2 border-rockport/40 bg-industrial/80 px-4 py-2 backdrop-blur-md">
+            <div className="police-glow inline-flex items-center gap-3 border-2 border-rockport/40 bg-carbon clip-angular px-4 py-2">
               <Shield className="h-4 w-4 text-pursuit-red" />
               <span className="font-heading text-xs font-bold uppercase tracking-[0.3em] text-rockport">
                 Most Wanted — Active
@@ -85,7 +85,7 @@ export function Hero() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="border-2 border-industrial-light bg-industrial/60 px-4 py-2 backdrop-blur-sm"
+                className="border-2 border-industrial-light bg-carbon clip-angular px-4 py-2"
               >
                 <span className="font-heading text-xl font-bold text-rockport">
                   {stat.value}

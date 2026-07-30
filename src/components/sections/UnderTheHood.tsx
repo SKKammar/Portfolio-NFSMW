@@ -97,7 +97,7 @@ export function UnderTheHood() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-10%' }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="group relative border-2 border-industrial-light bg-industrial/60 p-6 backdrop-blur-sm transition-all duration-300 hover:border-opacity-50 hover:-translate-y-1"
+            className="group relative border-2 border-industrial-light bg-carbon p-6 clip-angular glitch-hover"
             style={{
               borderLeftColor: group.color,
               borderLeftWidth: '4px',

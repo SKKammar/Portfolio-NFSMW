@@ -61,7 +61,7 @@ export function DriverProfile() {
           viewport={{ once: true, margin: '-10%' }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <div className="grunge-border border-2 border-industrial-light bg-industrial/80 p-8 backdrop-blur-md">
+          <div className="grunge-border border-2 border-industrial-light bg-gritty p-8 clip-angular">
             <div className="mb-6 flex items-center gap-3">
               <div className="h-3 w-3 bg-pursuit-red" />
               <span className="font-heading text-xs font-bold uppercase tracking-[0.3em] text-fog">

@@ -47,7 +47,7 @@ export function Blacklist() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-5%' }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="group relative border-2 border-industrial-light bg-industrial/60 backdrop-blur-sm transition-all duration-300 hover:border-rockport/50 hover:translate-x-2 hover:shadow-[4px_0_20px_rgba(229,193,88,0.1)]"
+            className="group relative border-2 border-industrial-light bg-carbon clip-angular glitch-hover"
           >
             {/* Yellow left accent */}
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-rockport transition-all duration-300 group-hover:w-1.5 group-hover:bg-rockport" />
