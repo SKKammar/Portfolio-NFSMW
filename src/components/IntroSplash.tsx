@@ -160,11 +160,6 @@ export function IntroSplash({ onEnter }: { onEnter: () => void }) {
         </p>
       </div>
 
-      {/* Corner police lights */}
-      <div className="absolute top-4 left-4 h-3 w-3 rounded-full bg-pursuit-red animate-pulse" />
-      <div className="absolute top-4 right-4 h-3 w-3 rounded-full bg-pursuit-blue animate-pulse" style={{ animationDelay: '0.3s' }} />
-      <div className="absolute bottom-4 left-4 h-3 w-3 rounded-full bg-pursuit-blue animate-pulse" style={{ animationDelay: '0.6s' }} />
-      <div className="absolute bottom-4 right-4 h-3 w-3 rounded-full bg-pursuit-red animate-pulse" style={{ animationDelay: '0.9s' }} />
     </div>
   );
 }
