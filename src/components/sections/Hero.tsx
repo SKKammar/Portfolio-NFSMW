@@ -140,6 +140,36 @@ export function Hero() {
               View The Blacklist
             </SkewButton>
           </motion.div>
+
+          {/* Thematic HUD Element - Right Side */}
+          <motion.div 
+            variants={itemVariants}
+            className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 flex-col items-end gap-2 opacity-60 select-none pointer-events-none"
+          >
+            <div className="flex items-center gap-3 mb-1">
+              <span className="font-heading text-xs font-bold uppercase tracking-[0.5em] text-pursuit-red">
+                Total Bounty
+              </span>
+              <div className="h-[2px] w-16 bg-pursuit-red" />
+            </div>
+            <span className="font-heading text-6xl lg:text-7xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+              24,500,000
+            </span>
+            
+            <div className="flex flex-col items-end gap-2 mt-8">
+              <span className="font-heading text-[10px] font-bold uppercase tracking-[0.4em] text-rockport">
+                Condition
+              </span>
+              <div className="flex gap-1.5">
+                {[1, 2, 3, 4, 5].map((level) => (
+                  <div 
+                    key={level} 
+                    className="h-5 w-4 bg-pursuit-red -skew-x-[20deg] shadow-[0_0_10px_rgba(220,38,38,0.6)]" 
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>
