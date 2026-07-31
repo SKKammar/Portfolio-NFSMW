@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 
 /**
  * NFS MW 2005 Intro Splash — plays police siren on click, then fades out.
@@ -9,6 +9,13 @@ import { useState, useCallback, useRef } from 'react';
 export function IntroSplash({ onEnter }: { onEnter: () => void }) {
   const [isExiting, setIsExiting] = useState(false);
   const audioContextRef = useRef<AudioContext | null>(null);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   const playSiren = useCallback(() => {
     const ctx = new AudioContext();
@@ -82,6 +89,7 @@ export function IntroSplash({ onEnter }: { onEnter: () => void }) {
   }, []);
 
   const handleEnter = () => {
+    document.body.style.overflow = '';
     playSiren();
     setIsExiting(true);
     setTimeout(() => {
@@ -148,7 +156,7 @@ export function IntroSplash({ onEnter }: { onEnter: () => void }) {
 
         {/* Subtitle */}
         <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-smoke">
-          Audio will play • Use headphones for best experience
+          Audio will play — Use headphones for best experience
         </p>
       </div>
 

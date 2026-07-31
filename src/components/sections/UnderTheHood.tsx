@@ -8,10 +8,10 @@ const skillGroups = [
     subtitle: 'Languages',
     color: '#e5c158',
     items: [
-      { name: 'Java', context: 'Production backends (Spring Boot)' },
-      { name: 'Python', context: 'ML & CV Scripts' },
-      { name: 'TypeScript', context: 'Type-safe React/Next.js' },
-      { name: 'SQL', context: 'Relational schema design' },
+      { name: 'Java', context: 'Production backends & Spring Boot' },
+      { name: 'Python', context: 'ML pipelines, FastAPI, CV scripts' },
+      { name: 'TypeScript', context: 'Type-safe React & Next.js' },
+      { name: 'SQL', context: 'Relational schema design & optimization' },
     ],
   },
   {
@@ -19,9 +19,9 @@ const skillGroups = [
     subtitle: 'Backend',
     color: '#d4a017',
     items: [
-      { name: 'Spring Boot', context: 'Used in Inventory System, JWT auth' },
-      { name: 'FastAPI', context: 'High-perf ML serving' },
-      { name: 'Node.js', context: 'Serverless Edge Functions' },
+      { name: 'Spring Boot', context: 'REST APIs, JWT auth, RBAC' },
+      { name: 'FastAPI', context: 'High-performance ML & API serving' },
+      { name: 'Next.js API Routes', context: 'Serverless edge functions' },
     ],
   },
   {
@@ -29,7 +29,7 @@ const skillGroups = [
     subtitle: 'Frontend',
     color: '#c4a35a',
     items: [
-      { name: 'Next.js', context: 'App Router & SSR' },
+      { name: 'Next.js 15', context: 'App Router & SSR' },
       { name: 'React', context: 'Component architecture' },
       { name: 'Tailwind CSS', context: 'Utility-first styling' },
     ],
@@ -41,7 +41,8 @@ const skillGroups = [
     items: [
       { name: 'MySQL', context: 'ACID transactions' },
       { name: 'PostgreSQL', context: 'Advanced queries & RLS' },
-      { name: 'Supabase', context: 'BaaS & Realtime' },
+      { name: 'Supabase', context: 'BaaS, Auth & Realtime' },
+      { name: 'pgvector', context: 'Vector similarity search' },
     ],
   },
   {
@@ -49,10 +50,10 @@ const skillGroups = [
     subtitle: 'AI / ML',
     color: '#b8972e',
     items: [
-      { name: 'OpenCV', context: 'Computer vision pipelines' },
+      { name: 'PyTorch', context: 'Deep learning & CV research' },
       { name: 'scikit-learn', context: 'Classical ML models' },
-      { name: 'Pandas', context: 'Data wrangling' },
-      { name: 'PyTorch', context: 'Deep learning research' },
+      { name: 'Pandas', context: 'Data wrangling & EDA' },
+      { name: 'ArcFace / ONNX', context: 'Biometric embedding & inference' },
     ],
   },
   {
@@ -62,8 +63,8 @@ const skillGroups = [
     items: [
       { name: 'Git', context: 'Version control' },
       { name: 'Docker', context: 'Containerization' },
-      { name: 'Postman', context: 'API testing' },
-      { name: 'IntelliJ', context: 'Java IDE' },
+      { name: 'GitHub Actions', context: 'CI/CD automation' },
+      { name: 'Gemini API', context: 'AI generation & code review' },
     ],
   },
 ];

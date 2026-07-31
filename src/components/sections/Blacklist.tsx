@@ -134,7 +134,7 @@ export function Blacklist() {
                     className="inline-flex items-center gap-2 font-heading text-xs font-semibold uppercase tracking-wider text-exhaust transition-none hover:text-rockport"
                   >
                     <ExternalLink size={14} />
-                    Access Target Data
+                    Live Demo
                   </a>
                 )}
               </div>

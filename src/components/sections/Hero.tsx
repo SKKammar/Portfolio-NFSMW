@@ -96,7 +96,7 @@ export function Hero() {
             <p className="mt-6 max-w-2xl font-heading text-base font-medium uppercase tracking-wider text-exhaust md:text-lg">
               <span className="text-pursuit-red">WANTED:</span> Software Engineer
               — Last seen building production-grade backend systems,
-              AI-powered solutions, and modern web applications.
+              AI-powered tools, and full-stack applications with measurable outcomes.
             </p>
           </motion.div>
 
@@ -105,7 +105,7 @@ export function Hero() {
             {[
               { value: '7', label: 'Projects' },
               { value: '15+', label: 'Technologies' },
-              { value: '2026', label: 'Active Since' },
+              { value: '2025', label: 'Active Since' },
             ].map((stat) => (
               <div
                 key={stat.label}

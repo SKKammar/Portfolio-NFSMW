@@ -38,7 +38,7 @@ export function DriverProfile() {
           <ul className="mt-8 space-y-4 max-w-2xl text-sm leading-relaxed text-exhaust">
             {[
               { tag: 'Status', value: 'Final Year CS Student' },
-              { tag: 'Specialty', value: 'Java, Python, Next.js, Spring Boot' },
+              { tag: 'Specialty', value: 'Java, Python, TypeScript, Next.js' },
               { tag: 'Objective', value: 'Backend and Full-Stack Engineering roles' },
             ].map((item) => (
               <li key={item.tag} className="flex gap-3 items-start">

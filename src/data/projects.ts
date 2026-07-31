@@ -16,13 +16,13 @@ export interface Project {
 export const blacklistProjects: Project[] = [
   {
     id: 'dognose-scanner',
-    title: 'DogNose ID System',
-    subtitle: 'Biometric identification system for dogs (In Progress)',
+    title: 'CANID',
+    subtitle: 'Canine biometric identification system',
     description:
-      'A unique biometric scanner backend that uses canine nose prints for reliable identification, similar to human fingerprints. Built with advanced computer vision techniques and a scalable backend architecture.',
-    technologies: ['Python', 'OpenCV', 'PyTorch', 'Spring Boot'],
+      'A biometric backend that identifies dogs by nose prints using ArcFace embeddings and pgvector similarity search. Features a SECURITY DEFINER RPC for cross-owner public lookup, FastAPI backend, full JWT auth, and CORS handling.',
+    technologies: ['Python', 'PyTorch', 'FastAPI', 'pgvector', 'ArcFace'],
     liveUrl: null,
-    githubUrl: 'https://github.com/SKKammar/DogNose',
+    githubUrl: 'https://github.com/SKKammar/CANID',
     year: 2026,
     category: 'Backend / AI',
     bounty: '1,500,000',
@@ -95,8 +95,8 @@ export const blacklistProjects: Project[] = [
     subtitle: 'AI-driven PR reviewer GitHub App',
     description:
       "A GitHub App that automatically reviews pull requests using the Gemini API, posting inline comments just like a human reviewer. It's engineered with a background task pattern to handle webhook timeouts, processes files concurrently to avoid API rate limits, and secures requests with HMAC-SHA256 verification—making it a robust, developer-friendly CI/CD addition.",
-    technologies: ['Node.js', 'GitHub Apps', 'Gemini API', 'CI/CD'],
-    liveUrl: null,
+    technologies: ['FastAPI', 'Python', 'Next.js 15', 'GitHub Apps', 'Gemini API', 'CI/CD'],
+    liveUrl: 'https://pr-pilot-two.vercel.app',
     githubUrl: 'https://github.com/SKKammar/pr-pilot',
     year: 2026,
     category: 'CI/CD / Tooling',
@@ -111,7 +111,7 @@ export const blacklistProjects: Project[] = [
     description:
       "A GitHub Action that scans repositories for accidentally committed secrets—such as API keys, tokens, and sensitive files—before they reach production. It's fully documented, easy for other developers to drop into their workflows, and shows strong attention to security automation and the developer experience in CI/CD pipelines.",
     technologies: ['GitHub Actions', 'Security', 'CI/CD'],
-    liveUrl: null,
+    liveUrl: 'https://secret-shield-topaz.vercel.app/',
     githubUrl: 'https://github.com/SKKammar/SecretShield',
     year: 2026,
     category: 'Security',

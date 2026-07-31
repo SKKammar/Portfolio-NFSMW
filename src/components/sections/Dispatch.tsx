@@ -87,9 +87,7 @@ export function Dispatch() {
         </div>
 
         <p className="text-sm leading-relaxed text-exhaust max-w-xl">
-          Currently seeking new contracts, software engineering opportunities,
-          internships, and exciting projects where I can contribute while
-          continuing to grow as an engineer. All channels open.
+          Currently seeking full-time software engineering opportunities and exciting projects where I can contribute while continuing to grow as an engineer. All channels open.
         </p>
       </motion.div>
 
