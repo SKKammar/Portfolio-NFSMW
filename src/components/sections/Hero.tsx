@@ -45,7 +45,7 @@ export function Hero() {
   
   const glowStyle = {
     textShadow: intensity > 0 ? `0 0 ${intensity * 30}px rgba(234, 179, 8, ${intensity})` : 'none',
-    transition: 'text-shadow 0.1s ease-out'
+    transition: 'text-shadow 0.05s ease-out'
   };
 
   return (
