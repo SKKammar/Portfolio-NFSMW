@@ -8,8 +8,6 @@ export interface Project {
   githubUrl: string | null;
   year: number | null;
   category: string | null;
-  bounty: string;
-  costToState: string;
   blacklistRank: number;
 }
 
@@ -25,8 +23,6 @@ export const blacklistProjects: Project[] = [
     githubUrl: 'https://github.com/SKKammar/CANID',
     year: 2026,
     category: 'Backend / AI',
-    bounty: '1,500,000',
-    costToState: '$500,000',
     blacklistRank: 7,
   },
   {
@@ -40,8 +36,6 @@ export const blacklistProjects: Project[] = [
     githubUrl: 'https://github.com/SKKammar/InventoryManagement',
     year: 2026,
     category: 'Backend',
-    bounty: '1,850,000',
-    costToState: '$750,000',
     blacklistRank: 6,
   },
   {
@@ -55,8 +49,6 @@ export const blacklistProjects: Project[] = [
     githubUrl: 'https://github.com/SKKammar/Anomaly-detection',
     year: 2026,
     category: 'Computer Vision',
-    bounty: '2,200,000',
-    costToState: '$1,100,000',
     blacklistRank: 5,
   },
   {
@@ -70,8 +62,6 @@ export const blacklistProjects: Project[] = [
     githubUrl: 'https://github.com/SKKammar/ChurnOps',
     year: 2026,
     category: 'MLOps',
-    bounty: '3,000,000',
-    costToState: '$1,500,000',
     blacklistRank: 4,
   },
   {
@@ -85,8 +75,6 @@ export const blacklistProjects: Project[] = [
     githubUrl: 'https://github.com/SKKammar/CodeMentor',
     year: 2026,
     category: 'Full Stack / AI',
-    bounty: '4,500,000',
-    costToState: '$2,200,000',
     blacklistRank: 3,
   },
   {
@@ -100,8 +88,6 @@ export const blacklistProjects: Project[] = [
     githubUrl: 'https://github.com/SKKammar/pr-pilot',
     year: 2026,
     category: 'CI/CD / Tooling',
-    bounty: '6,000,000',
-    costToState: '$3,500,000',
     blacklistRank: 2,
   },
   {
@@ -115,8 +101,6 @@ export const blacklistProjects: Project[] = [
     githubUrl: 'https://github.com/SKKammar/SecretShield',
     year: 2026,
     category: 'Security',
-    bounty: '10,000,000',
-    costToState: '$5,500,000',
     blacklistRank: 1,
   },
 ];
