@@ -140,6 +140,7 @@ export function Hero() {
               View The Blacklist
             </SkewButton>
           </motion.div>
+        </motion.div>
       </motion.div>
     </section>
   );
